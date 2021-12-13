@@ -1,0 +1,1311 @@
+<?xml version="1.0"?>
+								
+<robot name = "stewart">
+  <!-- *************************************************** -->
+  <!-- ******************* RVIZ Colors ******************* -->
+  <!-- *************************************************** -->
+
+  <material name="white">    <color rgba="1.00 1.00 1.00 1"/>  </material>
+  <material name="gray">     <color rgba="0.60 0.60 0.60 1"/>  </material>
+  <material name="table">    <color rgba="0.85 0.77 0.77 1"/>  </material>
+  <material name="black">    <color rgba="0.00 0.00 0.00 1"/>  </material>
+
+  <material name="red">      <color rgba="1.00 0.00 0.00 1"/>  </material>
+  <material name="green">    <color rgba="0.00 1.00 0.00 1"/>  </material>
+  <material name="blue">     <color rgba="0.00 0.00 1.00 1"/>  </material>
+
+  <material name="cyan">     <color rgba="0.00 1.00 1.00 1"/>  </material>
+  <material name="magenta">  <color rgba="1.00 0.00 1.00 1"/>  </material>
+  <material name="yellow">   <color rgba="1.00 1.00 0.00 1"/>  </material>
+
+  <material name="orange">   <color rgba="1.00 0.65 0.00 1"/>  </material>
+
+  <!-- *************************************************** -->
+  <!-- ******************* ACTUAL ROBOT ****************** -->
+  <!-- *************************************************** -->
+	
+	<joint name="piston1_prismatic_joint" type="prismatic">
+		<!-- shaft = black ***** cylinder = red -->
+		<parent  link="piston1_shaft_link"/>
+		<child   link="piston1_cylinder_link"/>
+		<origin  xyz="0 0 0" rpy=" 0 0 0"/> 
+		<axis    xyz="0 0 1"/>
+		<limit lower="0" upper ="1.9291197998702527" 
+					 effort="-1.0" velocity="1.0"/> 
+	</joint>
+
+<!--
+	<joint name = "piston2_prismatic_joint" type = "prismatic" >
+		<parent  link="piston2_cylinder_link"/> 
+		<child   link="piston2_shaft_link"/> 
+		<origin  xyz="0 0 0" rpy="0 0 0"/>
+		<axis    xyz="0 0 1"/>
+		<limit lower="0" upper ="1.9291197998702527" velocity="1.0"/> 
+	</joint>
+
+	<joint name = "piston3_prismatic_joint" type = "prismatic" >
+		<parent link="piston3_cylinder_link"/>
+		<child link="piston3_shaft_link"/> 
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="0 0 1"/>
+		<limit lower="0" upper ="1.9291197998702527" velocity="1.0"/> 
+	</joint>
+
+	<joint name = "piston4_prismatic_joint" type = "prismatic" >
+		<parent> piston4_cylinder_link </parent>
+		<child link="piston4_shaft_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> 0 </lower>
+				<upper> 1.9291197998702527 </upper>
+				<velocity> 1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston5_prismatic_joint" type = "prismatic" >
+		<parent> piston5_cylinder_link </parent>
+		<child link="piston5_shaft_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> 0 </lower>
+				<upper> 1.9291197998702527 </upper>
+				<velocity> 1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston6_prismatic_joint" type = "prismatic" >
+		<parent> piston6_cylinder_link </parent>
+		<child link="piston6_shaft_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> 0 </lower>
+				<upper> 1.9291197998702527 </upper>
+				<velocity> 1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+-->
+
+<!--
+	<joint name = "bottom_ball1_joint" type = "revolute" >
+		<parent  link="base_link"/> 
+		<child   link="bottom_ball1_link"/> 
+		<origin  xyz="0 0 0" rpy="0 0 0"/>
+		<axis    xyz="0 1 0"/>
+		<limit lower="-0.786" upper ="0.786" 
+				   effort="-1.0"      velocity="0.1"/> 
+	</joint>
+
+	<joint name = "bottom_ball2_joint" type = "revolute" >
+		<parent> base_link </parent>
+		<child link="bottom_ball2_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "bottom_ball3_joint" type = "revolute" >
+		<parent> base_link </parent>
+		<child link="bottom_ball3_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "bottom_ball4_joint" type = "revolute" >
+		<parent> base_link </parent>
+		<child link="bottom_ball4_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "bottom_ball5_joint" type = "revolute" >
+		<parent> base_link </parent>
+		<child link="bottom_ball5_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "bottom_ball6_joint" type = "revolute" >
+		<parent> base_link </parent>
+		<child link="bottom_ball6_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+	</joint>
+-->
+	<joint name = "top_ball1_joint_hor"  type = "revolute" >
+		<parent link="platform_link"/>
+		<child link="top_ball1_link_hor"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>	
+		<axis xyz="1 0 0"/>
+		<limit  lower="-0.786" upper ="0.786" 
+						effort="-1.0" velocity="0.1"/> 
+	</joint>
+	
+	<joint name="top_ball1_joint_vert" type="revolute">
+		<parent link="top_ball1_link_hor"/>
+		<child link="top_ball1_link_vert"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>	
+		<axis xyz="0 1 0"/>
+		<limit  lower="-0.786" upper ="0.786" 
+						effort="-1.0" velocity="0.1"/> 
+	</joint>
+	
+<!--
+	<joint name = "top_ball2_joint" type = "revolute2" >
+		<parent> platform_link </parent>
+		<child link="top_ball2_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+		<axis2> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis2>
+	</joint>
+
+	<joint name = "top_ball3_joint" type = "revolute2" >
+		<parent> platform_link </parent>
+		<child link="top_ball3_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+		<axis2> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis2>
+	</joint>
+
+	<joint name = "top_ball4_joint" type = "revolute2" >
+		<parent> platform_link </parent>
+		<child link="top_ball4_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+		<axis2> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis2>
+	</joint>
+
+	<joint name = "top_ball5_joint" type = "revolute2" >
+		<parent> platform_link </parent>
+		<child link="top_ball5_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+		<axis2> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis2>
+	</joint>
+
+	<joint name = "top_ball6_joint" type = "revolute2" >
+		<parent> platform_link </parent>
+		<child link="top_ball6_link </child>
+		<origin xyz="0 0 0 0 0 0 </origin>
+		<axis> 
+			<xyz> 0 1 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis>
+		<axis2> 
+			<xyz> 0 0 1 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+				<velocity> 0.1 </velocity>
+			</limit>
+		</axis2>
+	</joint>
+-->
+	<joint name = "piston1_bottom_pitch_joint" type = "revolute" >
+		<parent link="piston1_cylinder_link"/>
+		<child link="bottom_ball1_link"/>
+		<origin xyz="0 0 -0.9645598999351264" rpy="0 0 0"/>
+		<axis   xyz="1 0 0"/>
+		<limit lower="-0.786" upper ="0.786" 
+					 effort="-1.0" velocity="-1.0"/> 
+	</joint>
+<!--
+
+	<joint name = "piston2_bottom_pitch_joint" type = "revolute" >
+		<parent> bottom_ball2_link </parent>
+		<child link="piston2_cylinder_link </child>
+		<origin xyz="0 0 -0.9645598999351264 0 0 0</origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston3_bottom_pitch_joint" type = "revolute" >
+		<parent> bottom_ball3_link </parent>
+		<child link="piston3_cylinder_link </child>
+		<origin xyz="0 0 -0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston4_bottom_pitch_joint" type = "revolute" >
+		<parent> bottom_ball4_link </parent>
+		<child link="piston4_cylinder_link </child>
+		<origin xyz="0 0 -0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston5_bottom_pitch_joint" type = "revolute" >
+		<parent> bottom_ball5_link </parent>
+		<child link="piston5_cylinder_link </child>
+		<origin xyz="0 0 -0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston6_bottom_pitch_joint" type = "revolute" >
+		<parent> bottom_ball6_link </parent>
+		<child link="piston6_cylinder_link </child>
+		<origin xyz="0 0 -0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+-->
+	<joint name = "piston1_top_pitch_joint" type = "revolute">
+		<parent link="top_ball1_link_vert"/>
+		<child  link="piston1_shaft_link"/>
+		<origin xyz="0 0 0.9645598999351264" rpy="0 0 0"/>
+		<axis   xyz="1 0 0"/>
+		<limit  lower="-0.786" upper="0.786"
+						effort="-1.0"   velocity="-1.0"/>
+	</joint>
+<!--
+	<joint name = "piston2_top_pitch_joint" type = "revolute" >
+		<parent> top_ball2_link </parent>
+		<child link="piston2_shaft_link </child>
+		<origin xyz="0 0 0.9645598999351264 0 0 0</origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston3_top_pitch_joint" type = "revolute" >
+		<parent> top_ball3_link </parent>
+		<child link="piston3_shaft_link </child>
+		<origin xyz="0 0 0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston4_top_pitch_joint" type = "revolute" >
+		<parent> top_ball4_link </parent>
+		<child link="piston4_shaft_link </child>
+		<origin xyz="0 0 0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston5_top_pitch_joint" type = "revolute" >
+		<parent> top_ball5_link </parent>
+		<child link="piston5_shaft_link </child>
+		<origin xyz="0 0 0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+
+	<joint name = "piston6_top_pitch_joint" type = "revolute" >
+		<parent> top_ball6_link </parent>
+		<child link="piston6_shaft_link </child>
+		<origin xyz="0 0 0.9645598999351264 0 0 0 </origin>
+		<axis> 
+			<xyz> 1 0 0 </xyz>
+			<limit>
+				<lower> -0.786 </lower>
+				<upper> 0.786 </upper>
+			</limit>
+		</axis>
+	</joint>
+-->
+	<link name ="world"/>
+	
+	<joint name="initial" type="fixed">
+		<parent link="world"/>
+		<child  link="platform_link"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</joint>
+
+	<link name = "platform_link">
+		<inertial>
+			<origin xyz="0 0 2.125" rpy="0 0 0"/>
+			<mass value="1.0"/>
+			<inertia
+				ixx="0.25083333333333335"  ixy="0.0" ixz="0.0"
+				iyy="0.25083333333333335"  iyz="0.0" izz="0.5"/> 
+		</inertial>
+
+		<visual name = "base_link_visual" >
+			<geometry>
+				<cylinder length="0.1" radius="1.0"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+
+		<collision name = "base_link_collision" >
+			<geometry>
+				<cylinder length="0.1" radius="1.0"/>
+			</geometry>
+		</collision>
+	</link>
+	
+	<gazebo reference="platform_link"> <material>Gazebo/Red</material> </gazebo>
+
+	<link name = "bottom_ball1_link" >
+		<inertial>
+			<origin xyz="-0.10094113843523252 0.7998817953744161 0.25"
+							rpy="0 0 2.0945"/>
+			<mass value="0.1"/>
+			<inertia
+				ixx="0.0" ixy="0.0" ixz="0.0"
+				iyy="0.0" iyz="0.0" izz="0.0"/>
+		</inertial>
+
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere radius="0.1"/>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere radius="0.1"/>
+			</geometry>
+		</collision>
+	</link>
+
+<!--
+	<link name = "bottom_ball2_link" >
+		<origin xyz="0.10061530109167109 0.7999228470210314 0.25 0 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball2_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball2_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "bottom_ball3_link" >
+		<origin xyz="0.7429993434805581 -0.3129728032712424 0.25 0 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball3_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball3_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "bottom_ball4_link" >
+		<origin xyz="0.6421510948171859 -0.4874853550878114 0.25 0 0 2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball4_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball4_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "bottom_ball5_link" >
+		<origin xyz="-0.6433227790696778 -0.48593806388269956 0.25 0 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball5_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball5_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "bottom_ball6_link" >
+		<origin xyz="-0.743750623750048 -0.31118324130874175 0.25 0 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball6_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball6_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.1" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+-->
+	<link name = "top_ball1_link_hor">
+		<inertial>
+			<origin xyz="-0.6423496169447003 0.4872237367072718 2.075" 
+							rpy="0 0 2.0945"/>
+			<mass value="0.1"/>
+			<inertia
+				ixx="0.0" ixy="0.0" ixz="0.0"
+				iyy="0.0" iyz="0.0" izz="0.0"/>
+		</inertial>
+	
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "top_ball1_link_vert">
+		<inertial>
+			<origin xyz="-0.6423496169447003 0.4872237367072718 2.075" 
+							rpy="0 0 2.0945"/>
+			<mass value="0.1"/>
+			<inertia
+				ixx="0.0" ixy="0.0" ixz="0.0"
+				iyy="0.0" iyz="0.0" izz="0.0"/>
+		</inertial>
+
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+<!--
+	<link name = "top_ball2_link" >
+		<origin xyz="0.6421510948171859 0.4874853550878114 2.075 0 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "top_ball3_link" >
+		<origin xyz="0.7429993434805581 0.3129728032712424 2.075 0 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "top_ball4_link" >
+		<origin xyz="0.10046706791834908 -0.7999414780244177 2.075 0 0 2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "top_ball5_link" >
+		<origin xyz="-0.10108936054079155 -0.7998630765233847 2.075 0 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "top_ball6_link" >
+		<origin xyz="-0.7431267701815897 0.3126701191982996 2.075 0 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "bottom_ball1_link_visual" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</visual>
+
+		<collision name = "bottom_ball1_link_collision" >
+			<geometry>
+				<sphere>
+					<radius> 0.05" </radius>
+				</sphere>
+			</geometry>
+		</collision>
+	</link>
+-->
+	<link name = "piston1_cylinder_link">
+		<inertial>
+			<origin xyz="-0.37312220398747875 0.6426976507881956 1.125" rpy="-0.33025008757600727 0 2.0945"/>
+			<mass value="0.1"/>
+			<inertia
+				ixx="0.0" ixy="0.0" ixz="0.0"
+				iyy="0.0" iyz="0.0" izz="0.0"/>
+		</inertial>
+
+		<visual name = "piston1_cylinder_link_visual">
+			<geometry>
+				<cylinder length="1.9291197998702527" radius="0.1"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+
+		<collision name = "piston1_link_collision" >
+			<geometry>
+				<cylinder length="1.9291197998702527" radius="0.1"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="piston1_cylinder_link"> <material>Gazebo/Red</material> </gazebo> 
+
+	<!--	
+	<link name = "piston2_cylinder_link" >
+		<origin xyz="0.37312220398747875 0.6426976507881956 1.125 -0.33025008757600727 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston2_cylinder_link_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Red</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston2_link_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston3_cylinder_link" >
+		<origin xyz="0.7431557370007575 0 1.125 -0.33025008757600727 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston3_cylinder_link_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Red</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston3_link_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston4_cylinder_link" >
+		<origin xyz="0.3717050035686465 -0.6435183290001705 1.125 -0.33025008757600727 0 2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston4_cylinder_link_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Red</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston4_link_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston5_cylinder_link" >
+		<origin xyz="-0.3713235548646821 -0.6437385082778523 1.125 -0.33025008757600727 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston5_cylinder_link_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Red</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston5_link_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston6_cylinder_link" >
+		<origin xyz="-0.7431557370007575 0 1.125 -0.33025008757600727 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston6_cylinder_link_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Red</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston6_link_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.1 </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+-->
+	<link name="piston1_shaft_link">
+		<inertial>
+			<origin xyz="-0.37312220398747875 0.6426976507881956 1.125" rpy="-0.33025008757600727 0 2.0945"/>		
+			<mass value="0.1"/>
+			<inertia
+				ixx="0.0" ixy="0.0" ixz="0.0"
+				iyy="0.0" iyz="0.0" izz="0.0"/> 
+		</inertial>
+
+		<visual name = "piston1_shaft_visual" >
+			<geometry>
+				<cylinder length="1.9291197998702527" radius="0.05"/> 
+			</geometry>
+			<material name="black"/>
+		</visual>
+
+		<collision name = "piston1_shaft_collision" >
+			<geometry>
+				<cylinder length="1.9291197998702527" radius="0.05"/> 
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="piston1_shaft_link"> <material>Gazebo/Black</material> </gazebo>
+
+<!--
+	<link name = "piston2_shaft_link" >
+		<origin xyz="0.37312220398747875 0.6426976507881956 1.125 -0.33025008757600727 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston2_shaft_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Black</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston2_shaft_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston3_shaft_link" >
+		<origin xyz="0.7431557370007575 0 1.125 -0.33025008757600727 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston3_shaft_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Black</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston3_shaft_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston4_shaft_link" >
+		<origin xyz="0.3717050035686465 -0.6435183290001705 1.125 -0.33025008757600727 0 2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston4_shaft_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Black</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston4_shaft_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston5_shaft_link" >
+		<origin xyz="-0.3713235548646821 -0.6437385082778523 1.125 -0.33025008757600727 0 -2.0945 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston5_shaft_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Black</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston5_shaft_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name = "piston6_shaft_link" >
+		<origin xyz="-0.7431557370007575 0 1.125 -0.33025008757600727 0 0 </origin>
+		<inertial>
+			<mass> 0.1 </mass>
+			<inertia>
+				<ixx> 0.0 </ixx>
+				<ixy> 0.0 </ixy>
+				<ixz> 0.0 </ixz>
+				<iyy> 0.0 </iyy>
+				<iyz> 0.0 </iyz>
+				<izz> 0.0 </izz>
+			</inertia>
+		</inertial>
+
+		<visual name = "piston6_shaft_visual" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+			<material>
+				<script>
+					<uri>file://media/materials/scripts/gazebo.material</uri>
+					<name>Gazebo/Black</name>
+				</script>
+			</material>
+		</visual>
+
+		<collision name = "piston6_shaft_collision" >
+			<geometry>
+				<cylinder>
+					<radius> 0.05" </radius>
+					<length> 1.9291197998702527" </length>
+				</cylinder>
+			</geometry>
+		</collision>
+	</link>
+-->
+</robot>

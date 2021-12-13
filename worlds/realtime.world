@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="realtime">
+    <!-- Define the update rates!  The max_step_size is the dt for -->
+    <!-- each simulation step (1ms).  The real_time_update_rate is -->
+    <!-- the max number of steps per actual second (1000).         -->
+    <!-- So this will run at MOST at realtime!                     -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <!-- Gravity :) -->
+    <gravity>0.0 0.0 -9.81</gravity>
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- You can add other models.  Either indirectly (including -->
+    <!-- a model file) or directly (using the <model> tag)!      -->
+  </world>
+</sdf>

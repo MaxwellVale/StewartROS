@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+
+<robot name="FourDOF">
+  
+  <!-- *************************************************** -->
+  <!-- ******************** Kinematics ******************* -->
+  <!-- *************************************************** -->
+  <!-- Note the 'origin' tag in the joints defines the
+       shift and reorientation before the continuous joint
+       rotates around the 'axis'. -->
+
+  <link name="world"/>
+
+  <joint name="initial" type="fixed">
+    <parent   link="world"/>
+    <child    link="link0"/>
+    <origin   xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="link0">
+    <!-- This isn't moving.  Just to be consistent, show motor 1. -->
+    <inertial>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia
+        ixx="0.003" ixy="0.0" ixz="0.0"
+        iyy="0.003" iyz="0.0"
+        izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="theta1" type="continuous">
+    <parent   link="world"/>
+    <child    link="link1"/>
+    <origin   xyz="0 0 0.4" rpy="0 0 0"/>
+    <axis     xyz="0 0 1"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="link1">
+    <!-- Assume the rods are light, include only motor 2. -->
+    <inertial>
+      <origin xyz="0 0.2 0" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia
+        ixx="0.003" ixy="0.0" ixz="0.0"
+        iyy="0.001" iyz="0.0"
+        izz="0.003"/>
+    </inertial>
+  </link>
+
+  <joint name="theta2" type="continuous">
+    <parent   link="link1"/>
+    <child    link="link2"/>
+    <origin   xyz="0 0.4 0" rpy="0 0 0"/>
+    <axis     xyz="0 1 0"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="link2">
+    <!-- Assume the rods are light, include only motor 3. -->
+    <inertial>
+      <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia
+        ixx="0.003" ixy="0.0" ixz="0.0"
+        iyy="0.003" iyz="0.0"
+        izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="theta3" type="continuous">
+    <parent   link="link2"/>
+    <child    link="link3"/>
+    <origin   xyz="0 0 -0.4" rpy="0 0 0"/>
+    <axis     xyz="0 0 -1"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="link3">
+    <!-- Assume the rods are light, include only motor 4. -->
+    <inertial>
+      <origin xyz="0 0.2 0" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia
+        ixx="0.003" ixy="0.0" ixz="0.0"
+        iyy="0.001" iyz="0.0"
+        izz="0.003"/>
+    </inertial>
+  </link>
+
+  <joint name="theta4" type="continuous">
+    <parent   link="link3"/>
+    <child    link="link4"/>
+    <origin   xyz="0 0.4 0" rpy="0 0 0"/>
+    <axis     xyz="0 1 0"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="link4">
+    <!-- Assume the rods are light, include nothing. -->
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.0"/>
+      <inertia
+        ixx="0.0" ixy="0.0" ixz="0.0"
+        iyy="0.0" iyz="0.0"
+        izz="0.0"/>
+    </inertial>
+  </link>
+
+  <joint name="final" type="fixed">
+    <parent link="link4"/>
+    <child  link="tip"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="tip">
+    <!-- Assume the gripper is light, include nothing. -->
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.0"/>
+      <inertia
+        ixx="0.0" ixy="0.0" ixz="0.0"
+        iyy="0.0" iyz="0.0"
+        izz="0.0"/>
+    </inertial>
+  </link>
+
+
+  <!-- *************************************************** -->
+  <!-- ******************* RVIZ Colors ******************* -->
+  <!-- *************************************************** -->
+
+  <material name="white">    <color rgba="1.00 1.00 1.00 1"/>  </material>
+  <material name="gray">     <color rgba="0.60 0.60 0.60 1"/>  </material>
+  <material name="table">    <color rgba="0.85 0.77 0.77 1"/>  </material>
+  <material name="black">    <color rgba="0.00 0.00 0.00 1"/>  </material>
+
+  <material name="red">      <color rgba="1.00 0.00 0.00 1"/>  </material>
+  <material name="green">    <color rgba="0.00 1.00 0.00 1"/>  </material>
+  <material name="blue">     <color rgba="0.00 0.00 1.00 1"/>  </material>
+
+  <material name="cyan">     <color rgba="0.00 1.00 1.00 1"/>  </material>
+  <material name="magenta">  <color rgba="1.00 0.00 1.00 1"/>  </material>
+  <material name="yellow">   <color rgba="1.00 1.00 0.00 1"/>  </material>
+
+  <material name="orange">   <color rgba="1.00 0.65 0.00 1"/>  </material>
+
+
+  <!-- *************************************************** -->
+  <!-- ************* Visual Building Blocks ************** -->
+  <!-- *************************************************** -->
+
+  <!-- *** Attach to Link 0 (World): Pre Motor 1 Rod, Motor 1 *** -->
+
+  <joint name="attach-pre1rod" type="fixed">
+    <parent link="link0"/>
+    <child  link="pre1rod"/>
+  </joint>
+  <link name="pre1rod">
+    <visual>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-motor1" type="fixed">
+    <parent link="link0"/>
+    <child  link="motor1"/>
+  </joint>
+  <link name="motor1">
+    <visual>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <geometry>
+	<cylinder length="0.2" radius="0.05"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+
+  <!-- *** Attach to Link 1: Post Motor 1, Pre Motor 2, Motor 2 *** -->
+
+  <joint name="attach-post1rod" type="fixed">
+    <parent link="link1"/>
+    <child  link="post1rod"/>
+  </joint>
+  <link name="post1rod">
+    <visual>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-pre2rod" type="fixed">
+    <parent link="link1"/>
+    <child  link="pre2rod"/>
+  </joint>
+  <link name="pre2rod">
+    <visual>
+      <origin xyz="0 0.05 0" rpy="-1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-motor2" type="fixed">
+    <parent link="link1"/>
+    <child  link="motor2"/>
+  </joint>
+  <link name="motor2">
+    <visual>
+      <origin xyz="0 0.2 0" rpy="-1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.2" radius="0.05"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+
+  <!-- *** Attach to Link 2: Post Motor 2, Pre Motor 3, Motor 3 *** -->
+
+  <joint name="attach-post2rod" type="fixed">
+    <parent link="link2"/>
+    <child  link="post2rod"/>
+  </joint>
+  <link name="post2rod">
+    <visual>
+      <origin xyz="0 -0.05 0" rpy="-1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-pre3rod" type="fixed">
+    <parent link="link2"/>
+    <child  link="pre3rod"/>
+  </joint>
+  <link name="pre3rod">
+    <visual>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-motor3" type="fixed">
+    <parent link="link2"/>
+    <child  link="motor3"/>
+  </joint>
+  <link name="motor3">
+    <visual>
+      <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+      <geometry>
+	<cylinder length="0.2" radius="0.05"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+
+  <!-- *** Attach to Link 3: Post Motor 3, Pre Motor 4, Motor 4 *** -->
+  
+  <joint name="attach-post3rod" type="fixed">
+    <parent link="link3"/>
+    <child  link="post3rod"/>
+  </joint>
+  <link name="post3rod">
+    <visual>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-pre4rod" type="fixed">
+    <parent link="link3"/>
+    <child  link="pre4rod"/>
+  </joint>
+  <link name="pre4rod">
+    <visual>
+      <origin xyz="0 0.05 0" rpy="-1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-motor4" type="fixed">
+    <parent link="link3"/>
+    <child  link="motor4"/>
+  </joint>
+  <link name="motor4">
+    <visual>
+      <origin xyz="0 0.2 0" rpy="-1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.2" radius="0.05"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+
+  <!-- *** Attach to Link 4: Post Motor 4 *** -->
+
+  <joint name="attach-post4rod" type="fixed">
+    <parent link="link4"/>
+    <child  link="post4rod"/>
+  </joint>
+  <link name="post4rod">
+    <visual>
+      <origin xyz="0 -0.05 0" rpy="-1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.1" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <!-- *** Attach to Tip: Left Finger, Palm Bar, Right Finger *** -->
+
+  <joint name="attach-leftfinger" type="fixed">
+    <parent link="tip"/>
+    <child  link="leftfinger"/>
+  </joint>
+  <link name="leftfinger">
+    <visual>
+      <origin xyz="-0.05 0.025 0" rpy="1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.05" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-rightfinger" type="fixed">
+    <parent link="tip"/>
+    <child  link="rightfinger"/>
+  </joint>
+  <link name="rightfinger">
+    <visual>
+      <origin xyz="0.05 0.025 0" rpy="1.5708 0 0"/>
+      <geometry>
+	<cylinder length="0.05" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="attach-palm" type="fixed">
+    <parent link="tip"/>
+    <child  link="palm"/>
+  </joint>
+  <link name="palm">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+	<cylinder length="0.10" radius="0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  
+
+  <!-- *************************************************** -->
+  <!-- ******************* Gazebo Colors ***************** -->
+  <!-- *************************************************** -->
+  
+  <gazebo reference="pre1rod">   <material>Gazebo/Black</material> </gazebo>
+  <gazebo reference="motor1">    <material>Gazebo/Gray</material>  </gazebo>
+  <gazebo reference="post1rod">  <material>Gazebo/Black</material> </gazebo>
+
+  <gazebo reference="pre2rod">   <material>Gazebo/Black</material> </gazebo>
+  <gazebo reference="motor2">    <material>Gazebo/Gray</material>  </gazebo>
+  <gazebo reference="post2rod">  <material>Gazebo/Black</material> </gazebo>
+
+  <gazebo reference="pre3rod">   <material>Gazebo/Black</material> </gazebo>
+  <gazebo reference="motor3">    <material>Gazebo/Gray</material>  </gazebo>
+  <gazebo reference="post3rod">  <material>Gazebo/Black</material> </gazebo>
+
+  <gazebo reference="pre4rod">   <material>Gazebo/Black</material> </gazebo>
+  <gazebo reference="motor4">    <material>Gazebo/Gray</material>  </gazebo>
+  <gazebo reference="post4rod">  <material>Gazebo/Black</material> </gazebo>
+
+  <gazebo reference="leftfinger">  <material>Gazebo/Black</material> </gazebo>
+  <gazebo reference="rightfinger"> <material>Gazebo/Black</material> </gazebo>
+  <gazebo reference="palm">        <material>Gazebo/Black</material> </gazebo>
+
+
+</robot>

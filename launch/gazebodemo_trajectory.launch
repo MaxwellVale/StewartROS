@@ -1,0 +1,13 @@
+<launch>
+  <!-- Start Gazebo with the robot under PD control. -->
+  <include file="$(find hw56code)/launch/gazebo_sevendof_dynamic_pdcontrolled.launch"/>
+
+  <!-- Start the trajectory demo -->
+  <node pkg ="hw56code"
+  	type="gazebodemo_trajectory.py"
+	name="trajectory"
+	output="screen"
+	required="true">
+  </node>
+
+</launch>

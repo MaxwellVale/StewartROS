@@ -1,0 +1,92 @@
+#
+#  YAML File to be loaded into the ROS Parameter Server
+#
+#  These parameters support the various controllers.  They are
+#  collected under the namespace of the robot.
+#
+sevendof:
+
+  # The joint_state publisher.  This is a fake controller
+  # that causes Gazebo to produce the joint_states topic.
+  joint_state_publisher:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Quasi-Static Version: Skip the dynamics - these controllers
+  # set/force the simulation to the position (angle) commands.
+  j1_setposition:
+    type: position_controllers/JointPositionController
+    joint: theta1
+  j2_setposition:
+    type: position_controllers/JointPositionController
+    joint: theta2
+  j3_setposition:
+    type: position_controllers/JointPositionController
+    joint: theta3
+  j4_setposition:
+    type: position_controllers/JointPositionController
+    joint: theta4
+  j5_setposition:
+    type: position_controllers/JointPositionController
+    joint: theta5
+  j6_setposition:
+    type: position_controllers/JointPositionController
+    joint: theta6
+  j7_setposition:
+    type: position_controllers/JointPositionController
+    joint: theta7
+
+  # Dynamic Version: Effort commands - these controllers set the
+  # effort (torque) values in the simulation w/o position feedback.
+  j1_seteffort:
+    type: effort_controllers/JointEffortController
+    joint: theta1
+  j2_seteffort:
+    type: effort_controllers/JointEffortController
+    joint: theta2
+  j3_seteffort:
+    type: effort_controllers/JointEffortController
+    joint: theta3
+  j4_seteffort:
+    type: effort_controllers/JointEffortController
+    joint: theta4
+  j5_seteffort:
+    type: effort_controllers/JointEffortController
+    joint: theta5
+  j6_seteffort:
+    type: effort_controllers/JointEffortController
+    joint: theta6
+  j7_seteffort:
+    type: effort_controllers/JointEffortController
+    joint: theta7
+
+  # Dynamic Version: PD control - these controllers use the given
+  # PD gains to control to the position (angle) commands.
+  j1_pd_control:
+    type: effort_controllers/JointPositionController
+    joint: theta1
+    pid: {p: 10000.0, i: 0.0, d: 10.0}
+  j2_pd_control:
+    type: effort_controllers/JointPositionController
+    joint: theta2
+    pid: {p: 10000.0, i: 0.0, d: 10.0}
+  j3_pd_control:
+    type: effort_controllers/JointPositionController
+    joint: theta3
+    pid: {p: 2000.0, i: 0.0, d: 10.0}
+  j4_pd_control:
+    type: effort_controllers/JointPositionController
+    joint: theta4
+    pid: {p: 2000.0, i: 0.0, d: 10.0}
+  j5_pd_control:
+    type: effort_controllers/JointPositionController
+    joint: theta5
+    pid: {p: 1000.0, i: 0.0, d: 30.0}
+  j6_pd_control:
+    type: effort_controllers/JointPositionController
+    joint: theta6
+    pid: {p: 1000.0, i: 0.0, d: 30.0}
+  j7_pd_control:
+    type: effort_controllers/JointPositionController
+    joint: theta7
+    pid: {p: 100.0, i: 0.0, d: 5.0}

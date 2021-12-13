@@ -1,0 +1,20 @@
+<launch>
+  <!-- Define general parameters.  These can be overwritten by the
+       roslaunch command line. -->
+  <arg name="model" default="$(find hw56code)/urdf/fourDOF_masses.urdf"/>
+  <arg name="cfg"   default="$(find demo133)/rviz/viewurdf.rviz"/>
+
+
+  <!-- Load the URDF file into the robot_description parameter. -->
+  <param name="robot_description" textfile="$(arg model)"/>
+
+
+  <!-- Start the gravity code directly to run the test.  -->
+  <node pkg ="hw56code"
+	type="gravity.py"
+	name="gravity"
+	output="screen"
+	required="true">
+  </node>
+
+</launch>

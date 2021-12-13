@@ -1,0 +1,23 @@
+<launch>
+  <!-- You can overwrite these arguments from the commmand line. -->
+
+  <!-- These are arguments for Gazebo.  Select a world, for example:
+    <arg name="world_name" default="$(find hw56code)/worlds/stuff.world"/>
+    <arg name="world_name" default="$(find hw56code)/worlds/slowtime.world"/>
+    <arg name="world_name" default="$(find hw56code)/worlds/realtime.world"/>
+  -->
+  <arg name="paused"     default="false"/>
+  <arg name="world_name" default="$(find hw56code)/worlds/realtime.world"/>
+
+
+  <!-- Launch Gazebo with the given world, via the standard   -->
+  <!-- empty_world launch file to inherit the other defaults. -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name"   value="$(arg world_name)"/>
+    <arg name="paused"       value="$(arg paused)"/>
+    <arg name="gui"          value="true"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless"     value="false"/>
+    <arg name="debug"        value="false"/>
+  </include>
+</launch>

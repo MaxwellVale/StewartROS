@@ -1,0 +1,21 @@
+<launch>
+  <!-- Start Gazebo with the robot under PD control. -->
+  <include file="$(find hw56code)/launch/gazebo_sevendof_dynamic_pdcontrolled.launch"/>
+
+
+  <!-- Start a GUI with sliders to command the joints.  -->
+  <node pkg ="joint_state_publisher_gui"
+	type="joint_state_publisher_gui"
+	name="jsp">
+  </node>
+
+
+  <!-- Start the relay demo -->
+  <node pkg ="hw56code"
+  	type="gazebodemo_usegui.py"
+	name="trajectory"
+	output="screen"
+	required="true">
+  </node>
+
+</launch>

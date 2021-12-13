@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <!-- Define the update rates!  The max_step_size is the dt for -->
+    <!-- each simulation step (1ms).  The real_time_update_rate is -->
+    <!-- the max number of steps per actual second (1000).         -->
+    <!-- So this will run at MOST at realtime!                     -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <!-- Gravity :) -->
+    <gravity>0.0 0.0 -9.81</gravity>
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- You can add other models.  Either indirectly (including -->
+    <!-- a model file) or directly (using the <model> tag)!      -->
+    <include>
+      <pose>0.5 0.5 0 0 0 0</pose>
+      <uri>model://beer</uri>
+    </include>
+
+    <model name="box">
+      <pose>0.3 0.3 0.1 0 0 0</pose>
+      <link name="link">
+	<inertial>
+          <mass>1.000</mass>
+          <inertia>
+            <ixx>0.006667</ixx>
+            <iyy>0.006667</iyy>
+            <izz>0.006667</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+	</inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.2</size>
+            </box>
+          </geometry>
+	  <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+	  </material>
+        </visual>
+      </link>
+    </model>
+ 
+    <model name="sphere">
+      <pose>0.44 0.4 0.3 0 0 0</pose>
+      <link name="link">
+	<inertial>
+          <mass>1.000</mass>
+          <inertia>
+            <ixx>0.004</ixx>
+            <iyy>0.004</iyy>
+            <izz>0.004</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+	</inertial>
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>0.1</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.1</radius>
+            </sphere>
+          </geometry>
+	  <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+	  </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="cylinder">
+      <pose>0.8 0.3 0.1 1.5707 0 0</pose>
+      <link name="link">
+	<inertial>
+          <mass>1.000</mass>
+          <inertia>
+            <ixx>0.005833</ixx>
+            <iyy>0.005833</iyy>
+            <izz>0.005</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+	</inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.1</radius>
+              <length>0.2</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.1</radius>
+              <length>0.2</length>
+            </cylinder>
+          </geometry>
+	  <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+	  </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
