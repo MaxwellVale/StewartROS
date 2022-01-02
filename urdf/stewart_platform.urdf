@@ -469,7 +469,7 @@
 				iyy="0.25083333333333335"  iyz="0.0" izz="0.5"/> 
 		</inertial>
 
-		<visual name = "base_link_visual" >
+		<visual>
 			<geometry>
 				<cylinder length="0.1" radius="1.0"/>
 			</geometry>
@@ -482,8 +482,6 @@
 			</geometry>
 		</collision>
 	</link>
-	
-	<gazebo reference="platform_link"> <material>Gazebo/Red</material> </gazebo>
 
 	<link name = "bottom_ball1_link" >
 		<inertial>
