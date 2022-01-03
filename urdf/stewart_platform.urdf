@@ -83,7 +83,7 @@
 	
   <link name="piston1_shaft_link">
 		<visual>
-			<origin xyz="-0.37312220398747875 0.6426976507881956 1.125" rpy="-0.33025008757600727 0 2.0945"/>		
+			<origin xyz="0 0 0" rpy="0 0 0"/>		
 			<geometry>
 				<cylinder length="1.9291197998702527" radius="0.05"/> 
 			</geometry>
@@ -91,14 +91,11 @@
 		</visual>
 	</link>
 
-	<gazebo reference="piston1_shaft_link"> <material>Gazebo/Black</material> </gazebo>
-
-<!--DONE
 	<joint name="piston1_prismatic_joint" type="prismatic">
 		<parent  link="piston1_shaft_link"/>
 		<child   link="piston1_cylinder_link"/>
 		<origin  xyz="0 0 0" rpy=" 0 0 0"/> 
-		<axis    xyz="0 0 1"/>
+		<axis    xyz="0 0 -1"/>
 		<limit lower="0" upper ="1.9291197998702527" 
 					 effort="-1.0" velocity="1.0"/> 
 	</joint>
@@ -121,7 +118,6 @@
 	</link>
 
 	<gazebo reference="piston1_cylinder_link"> <material>Gazebo/Red</material> </gazebo> 
--->
 <!--
 	<joint name = "piston2_prismatic_joint" type = "prismatic" >
 		<parent  link="piston2_cylinder_link"/> 
