@@ -443,7 +443,8 @@
 	<joint name = "top_ball1_joint_hor"  type = "revolute" >
 		<parent link="platform_link"/>
 		<child link="top_ball1_link_hor"/>
-		<origin xyz="0 0 0" rpy="0 0 0"/>	
+		<origin xyz="-0.6423496169447003 0.4872237367072718 2.075" 
+						rpy="0 0 2.0945"/>
 		<axis xyz="0 0 1"/>
 		<limit  lower="-0.786" upper ="0.786" 
 						effort="-1.0" velocity="0.1"/> 
@@ -451,8 +452,8 @@
 
 	<link name = "top_ball1_link_hor">
 		<visual>
-			<origin xyz="-0.6423496169447003 0.4872237367072718 2.075" 
-							rpy="0 0 2.0945"/>
+			<origin xyz="0 0 0" 
+							rpy="0 0 0"/>
 			<geometry>
 				<sphere radius="0.05"/>
 			</geometry>
