@@ -4,7 +4,6 @@
   <arg name="model" default="$(find stewart)/urdf/stewart_platform.urdf"/>
   <arg name="cfg"   default="$(find stewart)/rviz/viewstewart.rviz"/>
 
-
   <!-- Load the URDF file into the robot_description parameter. -->
   <param name="robot_description" textfile="$(arg model)"/>
 
